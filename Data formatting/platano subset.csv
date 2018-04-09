@@ -1,0 +1,62 @@
+﻿user_id,meal_id,title,ingredients,kind,photo_file_name,carbs_eval,protein_eval,fat_eval,calories_eval,fiber_eval,evaluator_id,platemate_id,carbs_user,protein_user,fat_user,calories_user,fiber_user,premeal_bg,postmeal_bg
+16,68,Small minestrone soup from Jou Jou and mini baguette with Bree cheese and tomatoes,"Minestrone soup with carrots, beans, pasta, tomatoes, baguette, Bree cheese, tomatoe slices",lunch,cdv_photo_002.jpg,84,33,13,671,6,,,25,4,7,550,3,,
+21,35,TC salad bar.,"Mixed dark greens, carrots, celery, cukes, croutons, broccoli, cauliflower roasted, butternut squash roasted, balsamic vinaigrette",lunch,cdv_photo_014.jpg,31,6,15,265,7,,,76,4,9,670,11,,
+22,569,Sandwich,"Chicken, cheese, tomatoes, bun",lunch,cdv_photo_004.jpg,30,37,11,371,2,,,8,11,7,270,8,90,125
+22,809,Mozzarella and prosciutto with roasted peppers sandwich,"White bread, probably 2 slices worth, a few slices of prosciutto, probably 1 slice of mozzarella, looks like half a pepper, no dressing (I ate the half shown in the photo)",lunch,cdv_photo_002.jpg,27,27,14,350,2,60,,30,5,5,440,1,88,156
+24,939,Chicken salad on greens,"Chick salad with dried cranberries, lettuce, celery, cucumber, tsp balsamic vinager no oil. Granny Smith Apple not shown",lunch,cdv_photo_003.jpg,43,28,24,493,9,6865,,30,26,10,400,4,93,91
+24,814,Apple and peanut butter,Granny Smith Apple 1 serving of peanut butter,lunch,cdv_photo_004.jpg,29,4,8,191,5,6865,,22,8,3,300,3,86,97
+24,934,Salad,"Spinach, olives, tomatoes, chicken, egg whites, cucumber, garbanzo beans, kidney beans, mushrooms, sun flower seeds, carrots, olive oil, balsamic vinager",lunch,cdv_photo_002.jpg,23,45,27,516,9,6865,,22,13,22,360,5,108,100
+24,834,Soup and cheese stick,Italian wedding soup and Polly-o mozzarella cheese stick.,lunch,cdv_photo_004.jpg,22,18,13,322,3,6865,,12,9,9,200,3,133,90
+24,841,Turkey cheese,"4 slices of turkey, 3cubes of cheese, mustard, mayo",lunch,cdv_photo_002.jpg,1,16,30,352,0,60,,2,25,15,380,0,112,101
+24,846,Turkey cheese carrots,"4 slices Applegate smoked turkey, 1oz Gouda cheese, carrot sticks (5), mayo, mustard",lunch,cdv_photo_001.jpg,10,24,19,312,2,61,,2,16,30,350,2,104,117
+24,853,Turkey breast and cheese,"4 slices turkey, 1 oz cheese yalsberg 1tb mayo, mustard. Not shown 1 clementine, 1 serving mixed nuts",lunch,cdv_photo_001.jpg,16,29,27,433,3,61,,20,34,34,410,5,100,104
+24,857,"Apple peanut butter cheese stick, not shown hard boiled egg","Granny Smith Apple, serving of peanut butter (no sugar type) 1 organic valley cheese stick, hard boilded egg",lunch,cdv_photo_005.jpg,30,23,26,460,6,60,,29,16,19,370,5,92,101
+24,874,Tuna salad and greens,"Tuna mayo celery, tomatoes, cucumbers, lettuce, carrots, olive oil and vinager",lunch,cdv_photo_002.jpg,6,43,42,583,2,6865,,22,33,25,400,5,93,112
+24,880,Salad,"Grilled chicken, spinach, chick peas, mushrooms, beats, kidney beans, broccoli, tomatoes, cucumber, egg whites, olives",lunch,cdv_photo_004.jpg,8,23,10,376,2,59,,40,38,10,650,10,99,95
+24,915,Salad,"Spinach tomatoes olives chicken egg whites, broccoli, cucumber, carrots, gabonzo beans, kidney beans, mushrooms, sun flower seeds, olive oil, balsamic vinager",lunch,cdv_photo_003.jpg,22,13,22,351,5,59,,35,20,19,400,10,91,
+24,946,Tuna salad carrots,3/4 can of tuna. Tsp mayo. Celer. 3 whole carrots. Not shown: horizon cheese stick,lunch,cdv_photo_005.jpg,18,31,21,376,5,60,,18,40,6,380,9,95,95
+24,943,Chicken and dumpling soup,"Carrots, dumplings, chicken",lunch,cdv_photo_002.jpg,48,22,20,461,4,6865,,30,10,30,300,1,97,110
+24,912,Tuna salad on arugula with carrot sticks,"3/4 can tuna, celery, mayo, carrot sticks, arugula",lunch,cdv_photo_003.jpg,4,30,15,281,3,59,,14,30,10,300,6,89,99
+24,903,Salad,"Spinach chicken egg whites garbanzo beans kidney beans beets broccoli black olives carrots tomatos sunflower seeds cucumbers mushrooms, olive oil and vinegar",lunch,cdv_photo_003.jpg,26,26,21,399,8,60,,30,35,18,450,5,85,130
+24,889,Chicken salad,"Chicken, mayo, dried cranberries, pine nuts, celery, cucumber, lettuce greens",lunch,cdv_photo_011.jpg,16,16,25,358,2,59,,18,17,8,260,4,87,96
+31,772,"Sandwich, salad, fruit","Lettuce, tomato, cucumber, balsamic vinaigrette, pineapple, melon,",lunch,cdv_photo_002.jpg,34,1,2,182,2,59,,84,21,17,620,11,120,
+31,613,Salad and bread from JouJou,"Pumpernickel bread, lettuce, tomatoes, corn, cheese, chicken, onions, broccoli, carrots, cucumbers, alfalfa sprouts, kidney beans, avocado, peas, ranch dressing",lunch,cdv_photo_011.jpg,68,50,33,770,17,,,50,16,16,490,12,97,99
+31,629,"3 tacos (1 beef, 2 chorizo)","Beef, sausage, parsley, 6 small tortillas, onions, guacamole",lunch,cdv_photo_014.jpg,74,32,44,818,9,,,55,21,19,510,4,128,156
+31,652,"Beef, cabbage, and beets","Roast beef, beets, cabbage, carrots",lunch,cdv_photo_005.jpg,18,41,14,374,6,59,,22,34,18,400,9,120,111
+31,640,"Chicken with vegetable couscous, cauliflower, and seafood bisque","Chicken, couscous, zucchini, tomato, cauliflower, seafood bisque",lunch,cdv_photo_002.jpg,33,34,20,534,6,59,,70,29,23,610,6,112,148
+31,759,9th Ave hero (Tasty Deli),"Bread, turkey, sorpressata, lettuce, tomato, onion, cheese, red peppers",lunch,cdv_photo_023.jpg,45,23,7,1000,2,59,,90,28,31,790,9,107,
+31,709,"Ropa vieja, corn, plantains, Caesar salad","Shredded beef, steamed corn, plantains, lettuce, croutons, Caesar dressing",lunch,cdv_photo_013.jpg,58,48,50,700,7,59,,61,26,25,580,13,112,
+31,750,Pizza and salad,"2 slices of pizza, salas",lunch,cdv_photo_021.jpg,72,20,19,561,6,59,,50,11,29,490,10,98,
+31,743,Chicken cutlet hero,"Bread (5 oz), breaded chicken, lettuce tomato, chipotle mayo",lunch,cdv_photo_019.jpg,46,15,21,439,2,59,,75,21,19,490,0,93,
+31,735,Wild thing sandwich,"Bread (5oz), prosciutto, salami, cheese, lettuce, tomato, pesto sauce. Only 1/2 of sandwich is pictured",lunch,cdv_photo_017.jpg,25,38,46,680,2,59,,80,32,25,670,7,113,
+31,731,"JouJou salad, onion roll","Chicken, ranch dressing, Lettuce, tomatoes, onions, corn, avocado, mozarella cheese, chick peas, peas, cucmbers, green peppers, croutons, alfalfa sprouts, red peppers, 1 oz onion roll",lunch,cdv_photo_015.jpg,52,9,32,525,10,59,,64,23,25,570,13,84,
+31,724,4 chorizo tacos,"Sausage. Corn tortilla, lettuce, tomato",lunch,cdv_photo_014.jpg,60,27,30,631,9,59,,56,21,22,640,12,107,
+31,662,Vegetable baked ziti,"Pasta, tomato sauce, mozarella cheese, carrots, zucchini",lunch,cdv_photo_007.jpg,62,9,12,399,6,59,,45,13,22,410,4,120,102
+31,789,"Turkey, rice, and veggies","Cooked carrots, broccoli rabe, wild rice, turkey, gravy",lunch,cdv_photo_003.jpg,52,38,9,425,9,6865,,70,30,15,580,14,96,
+31,565,"Chicken and rice soup, chicken, vegetarian quesadilla, corn bread","Chicken, tortilla, veggies, cheese, tomatoes, onions, corn bread, rice, broth",lunch,cdv_photo_015.jpg,100,85,45,1138,4,,,57,26,18,650,4,116,
+31,558,"Beef with gravy, yellow squash, broccoli","Steamed yellow squash and broccoli, with light oil. Beef slices with brown gravy",lunch,cdv_photo_014.jpg,14,22,50,385,5,,,35,29,19,700,13,97,
+31,580,Salad from JouJou,"Lettuce, tomato, onion, chicken, avocado, mozarella cheese, corn, carrots, green peppers, sundries tomatoes, croutons, peas, broccoli, blue cheese dressing",lunch,cdv_photo_001.jpg,35,38,30,570,11,,,60,11,14,400,14,91,129
+31,592,The Fire Hero,"Bread, turkey, cheese, onions, lettuce, tomato, jalape√±os",lunch,cdv_photo_003.jpg,100,83,38,1163,9,,,49,24,22,710,7,123,
+36,259,Veggi burrito bowl,"Rice, black beans, corn, peppers,onions, tomatoes, lettuce, sour cream",lunch,cdv_photo_002.jpg,95,16,20,608,13,,,70,83,82,1130,87,100,
+54,543,"Tuna fish salad from Jou Jou, tea with 2 sugars","Filed greens, cucumber, tomatoes, carrots, tuna fish salad, tea, sugar",lunch,cdv_photo_003.jpg,50,50,50,1000,50,,,10,8,7,370,3,,
+54,544,"Two soft tacos with chicken and pulled pork, sour cream and avocado","Ingredients: Pork, chicken, soft tortilla 2, lettuce, tomato, sour cream, guacamole",lunch,cdv_photo_004.jpg,50,50,50,1000,50,,,18,13,13,740,6,,
+54,550,Sushi with spicy sauce,"Rice, fish, avocado, cucumber, soy sauce, spicy mayo sauce",lunch,cdv_photo_010.jpg,50,50,50,1000,50,,,19,10,10,420,1,,
+54,548,"Tuna fish salad from Jou Jou, tea with 2 sugars","Filed greens, cucumber, tomatoes, carrots, tuna fish salad, tea, sugar",lunch,cdv_photo_008.jpg,50,50,50,1000,50,,,12,14,18,290,6,,
+56,699,"Leftover Asian pork slaw, 2 low sugar coconut almond cookies","Peppers,  cabbage, carrots, scallions, pork tenderloin, avocado,  almonds, oil & vinegar, ginger. Cookies: sliced almonds, coconut, sugar, dark chocolate.",lunch,1473094777523.jpg,25,28,33,554,7,59,,25,25,25,450,5,113,126
+56,742,Leftover pizza with Joseph ' s oat/flax / whole wheat lavash.  One slice = 1/6 lavash.  Pepperoni & veg; chicken/feta.,"Lavash crust, tomato sauce, pepperoni, peppers, eggplant, mushroom, mozzarella; chicken, olives, sun-dried tomatoes, artichoke hearts, feta, mozzarella.",lunch,1473613582446.jpg,23,72,42,694,4,59,,20,30,40,600,4,98,114
+56,777,Chicken sandwich with Greek cucumber salad,"Josephs oat bran / flax / ww pita (1/2), 2 oz chicken, 1 t blue cheese dressing,  cucumber, tomato, onion,  feta salad",lunch,1474129761542.jpg,18,16,6,190,3,61,,20,25,20,400,5,99,123
+56,760,Hummus sandwich,"Josephs oat / flax / whole wheat pita, Cedar ' s artichoke spinach hummus (1/2 c)",lunch,1473791414308.jpg,27,16,13,265,11,59,,30,15,18,350,8,98,131
+56,590,"Fruit salad, cheese, corn & mango salad, hummus, carrots, cucumber, pasta with meat sauce",Potluck lunch,lunch,1472315970616.jpg,53,10,15,387,9,,,40,10,20,500,5,127,129
+56,673,Leftover shrimp avocado stir fry,"Shrimp, avocado, cabbage, onion, chopped cashews, carrot",lunch,1472929563250.jpg,24,14,37,521,7,59,,25,30,25,500,7,107,125
+56,661,Chicken and cheese on pita with spinach and peaches.,"Josephs oat bran/flax/ww pita with 2 oz chicken, 2 oz cheddar,  1/2 large peach",lunch,1472834364563.jpg,22,30,36,455,3,59,,25,20,25,900,5,94,120
+56,626,Chicken - spinach bake sandwich & avocado,"Joseph' s oat bran - flax - whole wheat pita, leftover chicken with spinach, peppers,  onion, spices, tomato paste; 1/3 avocado. Also 1 oz cheddar cheese",lunch,1472578882376.jpg,22,47,31,554,14,,,20,20,30,500,5,105,133
+56,610,"Chicken and cheese sandwich, fruit salad","~2 Oz chicken,  2 Oz cheddar, Joseph ' s flax,  oat bran & whole wheat pita,  1/2 c fruit",lunch,1472487442990.jpg,26,37,23,459,6,,,20,20,20,400,5,110,138
+56,638,"Scrambled eggs with cheese, fruit salad","2 medium eggs, scrambled with 1 t butter, 2 oz fresh mozzarella.  3/4 c mixed fruit, no dressing.",lunch,1472664812911.jpg,25,26,0,437,3,6865,,20,20,20,450,5,101,142
+57,761,"Guacamole and beans. Cucumber, vans crackers","Black beans, lentils, chili beans mix",lunch,1473793386841.jpg,46,11,14,340,12,59,,32,15,5,400,10,82,119
+57,847,Lamb burger,"Lamb, salads, hummus, tehina, a few fries",lunch,1475082213677.jpg,27,45,55,764,11,59,,25,23,56,380,8,96,92
+57,842,"Sardines, garbanzo beans and kale",As noted,lunch,1474998567804.jpg,45,28,9,352,13,61,,20,17,7,190,8,79,
+57,835,"Sardines, garbanzo beans, cucumber",As noted,lunch,1474915402953.jpg,33,32,13,378,8,6865,,20,16,50,320,10,72,
+57,600,"Sweet corned beef,  wrapped hot dog,  veggie chili,  Sharma meat with thin a (party)","Sweet corned beef,  wrapped hot dog,  veggie chili,  Sharma meat with thin a (party)",lunch,1472409233218.jpg,89,54,53,1048,6,,,31,20,16,400,3,102,119
+57,768,"Sardines, cucumber, garbanzo beans",As above,lunch,1473966482815.jpg,20,20,2,360,6,59,,19,15,23,320,6,87,107
+57,858,"Chicken, olives cucumber","Chicken thigh, 12 olives",lunch,1475256339213.jpg,17,32,26,453,2,60,,4,24,95,280,2,78,
+57,612,"Sardines,  olives,  garbanzo beans,  cucumber","Sardines in hot sauce,  canned beans",lunch,1472492809373.jpg,32,26,13,326,8,,,18,21,16,400,10,93,115

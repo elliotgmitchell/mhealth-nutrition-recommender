@@ -1,0 +1,536 @@
+,user_id,meal_id,food,calories,kind
+0,16,68,minestrone soup,127.2,lunch
+1,16,68,mini baguette,413.44,lunch
+2,16,68,cheese,113.12,lunch
+3,16,68,tomatoes,22.14,lunch
+4,16,68,minestrone soup,127.2,lunch
+5,16,68,carrots,16.1,lunch
+6,16,68,beans pasta,211.96,lunch
+7,16,68,tomatoes,22.14,lunch
+8,16,68,baguette,881.28,lunch
+9,16,68,cheese,113.12,lunch
+10,16,68,tomatoe,22.14,lunch
+11,21,35,salad,19.99,lunch
+12,21,35,greens,62.7,lunch
+13,21,35,carrots,16.1,lunch
+14,21,35,celery,6.75,lunch
+15,21,35,cukes,30.15,lunch
+16,21,35,croutons,66.03,lunch
+17,21,35,broccoli,12.95,lunch
+18,21,35,cauliflower,132.25,lunch
+19,21,35,roasted butternut squash,158.38,lunch
+20,21,35,balsamic vinaigrette,70.56,lunch
+21,22,569,sandwich,154.86,lunch
+22,22,569,chicken,187.0,lunch
+23,22,569,cheese,113.12,lunch
+24,22,569,tomatoes,22.14,lunch
+25,22,569,bun,122.76,lunch
+26,22,809,mozzarella,85.05,lunch
+27,22,809,prosciutto,55.28,lunch
+28,22,809,roasted peppers,61.76,lunch
+29,22,809,sandwich,154.86,lunch
+30,22,809,white bread,77.14,lunch
+31,22,809,prosciutto,55.28,lunch
+32,22,809,mozzarella,84.99,lunch
+33,22,809,pepper,2.89,lunch
+34,22,809,dressing,129.0,lunch
+35,24,939,chicken salad,253.99,lunch
+36,24,939,greens,62.7,lunch
+37,24,939,salad,19.99,lunch
+38,24,939,dried cranberries,123.2,lunch
+39,24,939,lettuce,15.98,lunch
+40,24,939,celery,6.75,lunch
+41,24,939,cucumber,30.15,lunch
+42,24,939,balsamic vinager,4.66,lunch
+43,24,939,oil,123.76,lunch
+44,24,939,granny smith apple,63.22,lunch
+45,24,814,apple,94.64,lunch
+46,24,814,peanut butter,188.16,lunch
+47,24,814,granny smith apple,63.22,lunch
+48,24,814,peanut butter,188.16,lunch
+49,24,934,salad,19.99,lunch
+50,24,934,spinach,41.4,lunch
+51,24,934,olives,4.37,lunch
+52,24,934,tomatoes,22.14,lunch
+53,24,934,chicken egg,71.5,lunch
+54,24,934,cucumber,30.15,lunch
+55,24,934,garbanzo beans,268.96,lunch
+56,24,934,kidney beans,224.79,lunch
+57,24,934,mushrooms,3.36,lunch
+58,24,934,sun flower seeds,698.88,lunch
+59,24,934,carrots,16.1,lunch
+60,24,934,olive oil,119.34,lunch
+61,24,934,balsamic vinager,14.08,lunch
+62,24,834,soup,62.0,lunch
+63,24,834,cheese stick,85.05,lunch
+64,24,834,italian wedding soup,120.05,lunch
+65,24,834,mozzarella cheese stick,85.05,lunch
+66,24,841,turkey,214.33,lunch
+67,24,841,cheese,113.12,lunch
+68,24,841,turkey,214.33,lunch
+69,24,841,cheese,113.12,lunch
+70,24,841,mustard,3.0,lunch
+71,24,841,mayo,93.84,lunch
+72,24,846,turkey,214.33,lunch
+73,24,846,cheese,113.12,lunch
+74,24,846,carrots,16.1,lunch
+75,24,846,smoked turkey,141.12,lunch
+76,24,846,gouda cheese,100.93,lunch
+77,24,846,carrot sticks,50.02,lunch
+78,24,846,mayo,93.84,lunch
+79,24,846,mustard,3.0,lunch
+80,24,853,turkey breast,124.95,lunch
+81,24,853,cheese,113.12,lunch
+82,24,853,turkey,214.33,lunch
+83,24,853,cheese,114.53,lunch
+84,24,853,mayo,93.67,lunch
+85,24,853,mustard,3.0,lunch
+86,24,853,clementine,34.78,lunch
+87,24,853,mixed nuts,168.4,lunch
+88,24,857,apple,94.64,lunch
+89,24,857,peanut butter,188.16,lunch
+90,24,857,cheese stick,85.05,lunch
+91,24,857,hard boiled egg,77.5,lunch
+92,24,857,granny smith apple,63.22,lunch
+93,24,857,peanut butter,188.16,lunch
+94,24,857,sugar,16.25,lunch
+95,24,857,cheese stick,85.05,lunch
+96,24,857,egg,71.5,lunch
+97,24,874,tuna salad,383.35,lunch
+98,24,874,greens,62.7,lunch
+99,24,874,tuna,110.5,lunch
+100,24,874,mayo,93.84,lunch
+101,24,874,celery,6.75,lunch
+102,24,874,tomatoes,22.14,lunch
+103,24,874,cucumbers,30.15,lunch
+104,24,874,lettuce,15.98,lunch
+105,24,874,carrots,16.1,lunch
+106,24,874,olive oil,119.34,lunch
+107,24,874,vinager,2.68,lunch
+108,24,880,salad grilled chicken,302.5,lunch
+109,24,880,spinach,41.4,lunch
+110,24,880,chick peas,268.96,lunch
+111,24,880,mushrooms,3.36,lunch
+112,24,880,beats,22.0,lunch
+113,24,880,kidney beans,224.79,lunch
+114,24,880,broccoli,12.95,lunch
+115,24,880,tomatoes,22.14,lunch
+116,24,880,cucumber,30.15,lunch
+117,24,880,egg whites,17.16,lunch
+118,24,880,olives,4.37,lunch
+119,24,915,salad,19.99,lunch
+120,24,915,spinach,41.4,lunch
+121,24,915,tomatoes,22.14,lunch
+122,24,915,olives,4.37,lunch
+123,24,915,chicken egg,71.5,lunch
+124,24,915,broccoli,12.95,lunch
+125,24,915,cucumber,30.15,lunch
+126,24,915,carrots,16.1,lunch
+127,24,915,beans,238.76,lunch
+128,24,915,kidney beans,224.79,lunch
+129,24,915,mushrooms,3.36,lunch
+130,24,915,sun flower seeds,698.88,lunch
+131,24,915,olive oil,119.34,lunch
+132,24,915,balsamic vinager,14.08,lunch
+133,24,946,tuna salad,383.35,lunch
+134,24,946,carrots,16.1,lunch
+135,24,946,can of tuna,165.12,lunch
+136,24,946,mayo,31.22,lunch
+137,24,946,carrots,48.3,lunch
+138,24,946,cheese stick,85.05,lunch
+139,24,943,chicken and dumpling soup,323.4,lunch
+140,24,943,carrots,16.1,lunch
+141,24,943,dumplings,73.65,lunch
+142,24,943,chicken,187.0,lunch
+143,24,912,tuna salad,383.35,lunch
+144,24,912,arugula,2.5,lunch
+145,24,912,carrot sticks,50.02,lunch
+146,24,912,can tuna,165.12,lunch
+147,24,912,celery,6.75,lunch
+148,24,912,mayo,93.84,lunch
+149,24,912,carrot sticks,50.02,lunch
+150,24,912,arugula,2.5,lunch
+151,24,903,salad,19.99,lunch
+152,24,903,spinach,41.4,lunch
+153,24,903,chicken egg,71.5,lunch
+154,24,903,garbanzo beans,268.96,lunch
+155,24,903,kidney beans,224.79,lunch
+156,24,903,beets,22.0,lunch
+157,24,903,broccoli,12.95,lunch
+158,24,903,black olives,4.37,lunch
+159,24,903,carrots,16.1,lunch
+160,24,903,tomatos,22.14,lunch
+161,24,903,sunflower seeds,698.88,lunch
+162,24,903,cucumbers,30.15,lunch
+163,24,903,mushrooms,3.36,lunch
+164,24,903,olive oil and vinegar,66.68,lunch
+165,24,889,chicken salad,253.99,lunch
+166,24,889,chicken mayo,320.16,lunch
+167,24,889,dried cranberries,123.2,lunch
+168,24,889,pine nuts,190.8,lunch
+169,24,889,celery,6.75,lunch
+170,24,889,cucumber,30.15,lunch
+171,24,889,lettuce,15.98,lunch
+172,24,889,greens,62.7,lunch
+173,31,772,sandwich,154.86,lunch
+174,31,772,salad,19.99,lunch
+175,31,772,fruit,96.62,lunch
+176,31,772,lettuce,15.98,lunch
+177,31,772,tomato,22.14,lunch
+178,31,772,cucumber,30.15,lunch
+179,31,772,balsamic vinaigrette,70.56,lunch
+180,31,772,pineapple,41.25,lunch
+181,31,772,melon,60.18,lunch
+182,31,613,salad,19.99,lunch
+183,31,613,bread,77.14,lunch
+184,31,613,pumpernickel bread,80.0,lunch
+185,31,613,lettuce,15.98,lunch
+186,31,613,tomatoes,22.14,lunch
+187,31,613,corn,98.88,lunch
+188,31,613,cheese,113.12,lunch
+189,31,613,chicken,187.0,lunch
+190,31,613,onions,41.36,lunch
+191,31,613,broccoli,12.95,lunch
+192,31,613,carrots,16.1,lunch
+193,31,613,cucumbers,30.15,lunch
+194,31,613,alfalfa sprouts,7.59,lunch
+195,31,613,kidney beans,224.79,lunch
+196,31,613,avocado,227.12,lunch
+197,31,613,peas,134.4,lunch
+198,31,613,ranch dressing,129.0,lunch
+199,31,629,tacos,630.36,lunch
+200,31,629,beef,247.35,lunch
+201,31,629,beef sausage,388.8,lunch
+202,31,629,parsley,1.37,lunch
+203,31,629,tortillas,955.5,lunch
+204,31,629,onions,41.36,lunch
+205,31,629,guacamole,45.26,lunch
+206,31,652,beef,247.35,lunch
+207,31,652,cabbage,17.25,lunch
+208,31,652,beets,22.0,lunch
+209,31,652,roast beef,10.7,lunch
+210,31,652,beets,22.0,lunch
+211,31,652,cabbage,17.25,lunch
+212,31,652,carrots,16.1,lunch
+213,31,640,chicken,187.0,lunch
+214,31,640,vegetable,45.3,lunch
+215,31,640,couscous,175.84,lunch
+216,31,640,cauliflower,132.25,lunch
+217,31,640,seafood,154.57,lunch
+218,31,640,chicken,187.0,lunch
+219,31,640,couscous,175.84,lunch
+220,31,640,zucchini,32.55,lunch
+221,31,640,tomato,22.14,lunch
+222,31,640,cauliflower,132.25,lunch
+223,31,640,seafood,154.57,lunch
+224,31,759,hero,531.5,lunch
+225,31,759,bread,77.14,lunch
+226,31,759,turkey,214.33,lunch
+227,31,759,lettuce,15.98,lunch
+228,31,759,tomato,22.14,lunch
+229,31,759,onion,41.36,lunch
+230,31,759,cheese,113.12,lunch
+231,31,759,red peppers,37.8,lunch
+232,31,709,corn,98.88,lunch
+233,31,709,plantains,278.4,lunch
+234,31,709,caesar salad,481.43,lunch
+235,31,709,shredded beef,274.68,lunch
+236,31,709,corn,98.88,lunch
+237,31,709,plantains,278.4,lunch
+238,31,709,lettuce,15.98,lunch
+239,31,709,croutons,66.03,lunch
+240,31,709,caesar dressing,162.6,lunch
+241,31,750,pizza,284.62,lunch
+242,31,750,salad,19.99,lunch
+243,31,750,pizza,508.86,lunch
+244,31,743,chicken cutlet,270.59,lunch
+245,31,743,hero,531.5,lunch
+246,31,743,bread,77.14,lunch
+247,31,743,breaded chicken,37.8,lunch
+248,31,743,lettuce,15.98,lunch
+249,31,743,tomato,22.14,lunch
+250,31,743,chipotle mayo,78.96,lunch
+251,31,735,sandwich bread,77.14,lunch
+252,31,735,prosciutto,55.28,lunch
+253,31,735,salami,37.04,lunch
+254,31,735,cheese,113.12,lunch
+255,31,735,lettuce,15.98,lunch
+256,31,735,tomato pesto,134.13,lunch
+257,31,735,sauce,66.0,lunch
+258,31,735,sandwich,38.72,lunch
+259,31,731,salad,19.99,lunch
+260,31,731,onion roll,128.34,lunch
+261,31,731,ranch dressing,129.0,lunch
+262,31,731,lettuce,15.98,lunch
+263,31,731,tomatoes,22.14,lunch
+264,31,731,onions,41.36,lunch
+265,31,731,corn,98.88,lunch
+266,31,731,avocado,227.12,lunch
+267,31,731,mozarella cheese,85.05,lunch
+268,31,731,chick peas,268.96,lunch
+269,31,731,peas,134.4,lunch
+270,31,731,green peppers,31.92,lunch
+271,31,731,croutons,66.03,lunch
+272,31,731,alfalfa sprouts,7.59,lunch
+273,31,731,red peppers,37.8,lunch
+274,31,731,onion roll,79.1,lunch
+275,31,724,chorizo tacos,1441.35,lunch
+276,31,724,sausage,149.5,lunch
+277,31,724,corn tortilla,52.32,lunch
+278,31,724,lettuce,15.98,lunch
+279,31,724,tomato,22.14,lunch
+280,31,662,vegetable,45.3,lunch
+281,31,662,baked ziti pasta,579.26,lunch
+282,31,662,tomato sauce,29.4,lunch
+283,31,662,mozarella cheese,85.05,lunch
+284,31,662,carrots,16.1,lunch
+285,31,662,zucchini,32.55,lunch
+286,31,789,turkey,214.33,lunch
+287,31,789,rice and veggies,208.29,lunch
+288,31,789,cooked carrots,3.4,lunch
+289,31,789,broccoli rabe,8.8,lunch
+290,31,789,wild rice,165.64,lunch
+291,31,789,turkey gravy,121.38,lunch
+292,31,565,chicken and rice soup,116.64,lunch
+293,31,565,chicken,187.0,lunch
+294,31,565,vegetarian quesadilla,948.97,lunch
+295,31,565,corn bread,172.9,lunch
+296,31,565,chicken,187.0,lunch
+297,31,565,tortilla,159.25,lunch
+298,31,565,veggies,45.3,lunch
+299,31,565,cheese,113.12,lunch
+300,31,565,tomatoes,22.14,lunch
+301,31,565,onions,41.36,lunch
+302,31,565,corn bread,172.9,lunch
+303,31,565,rice,205.4,lunch
+304,31,565,broth,86.4,lunch
+305,31,558,beef,247.35,lunch
+306,31,558,gravy,27.36,lunch
+307,31,558,yellow squash,68.4,lunch
+308,31,558,broccoli steamed,27.3,lunch
+309,31,558,yellow squash,68.4,lunch
+310,31,558,broccoli,12.95,lunch
+311,31,558,oil,123.76,lunch
+312,31,558,beef,247.35,lunch
+313,31,558,brown gravy,123.49,lunch
+314,31,580,salad,19.99,lunch
+315,31,580,lettuce,15.98,lunch
+316,31,580,tomato,22.14,lunch
+317,31,580,onion,41.36,lunch
+318,31,580,chicken,187.0,lunch
+319,31,580,avocado,227.12,lunch
+320,31,580,mozarella cheese,85.05,lunch
+321,31,580,corn,98.88,lunch
+322,31,580,carrots,16.1,lunch
+323,31,580,green peppers,31.92,lunch
+324,31,580,tomatoes,22.14,lunch
+325,31,580,croutons,66.03,lunch
+326,31,580,peas,134.4,lunch
+327,31,580,broccoli,12.95,lunch
+328,31,580,blue cheese dressing,72.6,lunch
+329,31,592,hero,531.5,lunch
+330,31,592,bread,77.14,lunch
+331,31,592,turkey,214.33,lunch
+332,31,592,cheese,113.12,lunch
+333,31,592,onions,41.36,lunch
+334,31,592,lettuce,15.98,lunch
+335,31,592,tomato,22.14,lunch
+336,31,592,jalapeos,4.06,lunch
+337,36,259,burrito bowl,701.86,lunch
+338,36,259,rice,205.4,lunch
+339,36,259,black beans,227.04,lunch
+340,36,259,corn,98.88,lunch
+341,36,259,tomatoes,22.14,lunch
+342,36,259,lettuce,15.98,lunch
+343,36,259,sour cream,23.76,lunch
+344,54,543,tuna fish salad,383.35,lunch
+345,54,543,tea,1.78,lunch
+346,54,543,sugars,32.51,lunch
+347,54,543,greens,62.7,lunch
+348,54,543,cucumber,30.15,lunch
+349,54,543,tomatoes,22.14,lunch
+350,54,543,carrots,16.1,lunch
+351,54,543,tuna fish salad,383.35,lunch
+352,54,543,tea,1.78,lunch
+353,54,543,sugar,16.25,lunch
+354,54,544,soft tacos,420.24,lunch
+355,54,544,chicken,187.0,lunch
+356,54,544,pulled pork,418.32,lunch
+357,54,544,sour cream,23.76,lunch
+358,54,544,avocado,227.12,lunch
+359,54,544,pork,202.3,lunch
+360,54,544,chicken,187.0,lunch
+361,54,544,soft tortilla,234.0,lunch
+362,54,544,lettuce,15.98,lunch
+363,54,544,tomato,22.14,lunch
+364,54,544,sour cream,23.76,lunch
+365,54,544,guacamole,45.26,lunch
+366,54,550,sushi,342.59,lunch
+367,54,550,sauce,66.0,lunch
+368,54,550,rice,205.4,lunch
+369,54,550,fish,217.6,lunch
+370,54,550,avocado,227.12,lunch
+371,54,550,cucumber,30.15,lunch
+372,54,550,soy sauce,8.48,lunch
+373,54,550,spicy mayo,78.96,lunch
+374,54,550,sauce,66.0,lunch
+375,54,548,tuna fish salad,383.35,lunch
+376,54,548,tea,1.78,lunch
+377,54,548,sugars,32.51,lunch
+378,54,548,greens,62.7,lunch
+379,54,548,cucumber,30.15,lunch
+380,54,548,tomatoes,22.14,lunch
+381,54,548,carrots,16.1,lunch
+382,54,548,tuna fish salad,383.35,lunch
+383,54,548,tea,1.78,lunch
+384,54,548,sugar,16.25,lunch
+385,56,699,pork,202.3,lunch
+386,56,699,slaw,174.11,lunch
+387,56,699,sugar,32.51,lunch
+388,56,699,coconut almond,158.39,lunch
+389,56,699,cookies,147.6,lunch
+390,56,699,peppers,31.92,lunch
+391,56,699,cabbage,17.25,lunch
+392,56,699,carrots,16.1,lunch
+393,56,699,scallions,4.8,lunch
+394,56,699,pork tenderloin,124.95,lunch
+395,56,699,avocado,227.12,lunch
+396,56,699,almonds,7.71,lunch
+397,56,699,oil,123.76,lunch
+398,56,699,vinegar,2.68,lunch
+399,56,699,ginger,1.6,lunch
+400,56,699,sliced almonds,532.68,lunch
+401,56,699,coconut sugar,15.48,lunch
+402,56,699,dark chocolate,154.79,lunch
+403,56,742,pizza,284.62,lunch
+404,56,742,wheat,631.68,lunch
+405,56,742,lavash,233.89,lunch
+406,56,742,lavash,39.76,lunch
+407,56,742,pepperoni,10.08,lunch
+408,56,742,veg,45.3,lunch
+409,56,742,chicken,187.0,lunch
+410,56,742,feta,74.84,lunch
+411,56,742,lavash,233.89,lunch
+412,56,742,tomato sauce,29.4,lunch
+413,56,742,pepperoni,10.08,lunch
+414,56,742,peppers,31.92,lunch
+415,56,742,eggplant,198.1,lunch
+416,56,742,mushroom,3.36,lunch
+417,56,742,mozzarella,85.05,lunch
+418,56,742,olives,4.37,lunch
+419,56,742,sun dried tomatoes,5.16,lunch
+420,56,742,artichoke hearts,14.31,lunch
+421,56,742,mozzarella,85.05,lunch
+422,56,777,chicken sandwich,467.5,lunch
+423,56,777,cucumber salad,49.16,lunch
+424,56,777,oat bran,87.6,lunch
+425,56,777,flax,55.0,lunch
+426,56,777,pita,165.0,lunch
+427,56,777,chicken,124.67,lunch
+428,56,777,blue cheese dressing,24.45,lunch
+429,56,777,cucumber,30.15,lunch
+430,56,777,tomato,22.14,lunch
+431,56,777,onion,41.36,lunch
+432,56,777,feta,74.84,lunch
+433,56,777,salad,19.99,lunch
+434,56,760,hummus,99.6,lunch
+435,56,760,sandwich,154.86,lunch
+436,56,760,oat,153.5,lunch
+437,56,760,flax,55.0,lunch
+438,56,760,whole wheat pita,167.68,lunch
+439,56,760,artichoke spinach hummus,99.6,lunch
+440,56,590,fruit salad,96.62,lunch
+441,56,590,cheese,113.12,lunch
+442,56,590,corn,98.88,lunch
+443,56,590,mango salad,125.84,lunch
+444,56,590,hummus,99.6,lunch
+445,56,590,carrots,16.1,lunch
+446,56,590,cucumber,30.15,lunch
+447,56,590,pasta with meat sauce,666.83,lunch
+448,56,673,shrimp,5.95,lunch
+449,56,673,avocado,227.12,lunch
+450,56,673,stir fry shrimp,189.83,lunch
+451,56,673,avocado,227.12,lunch
+452,56,673,cabbage,17.25,lunch
+453,56,673,onion,41.36,lunch
+454,56,673,cashews,9.01,lunch
+455,56,673,carrot,16.1,lunch
+456,56,661,chicken,187.0,lunch
+457,56,661,cheese,113.12,lunch
+458,56,661,pita,165.0,lunch
+459,56,661,spinach,41.4,lunch
+460,56,661,peaches,68.25,lunch
+461,56,661,oat,153.5,lunch
+462,56,661,pita,165.0,lunch
+463,56,661,chicken,124.67,lunch
+464,56,661,cheddar,229.07,lunch
+465,56,661,peach,34.13,lunch
+466,56,626,chicken,187.0,lunch
+467,56,626,spinach,41.4,lunch
+468,56,626,sandwich,154.86,lunch
+469,56,626,avocado,227.12,lunch
+470,56,626,oat bran,87.6,lunch
+471,56,626,flax,55.0,lunch
+472,56,626,whole wheat pita,167.68,lunch
+473,56,626,leftover chicken,189.55,lunch
+474,56,626,spinach,41.4,lunch
+475,56,626,peppers,31.92,lunch
+476,56,626,onion,41.36,lunch
+477,56,626,spices,15.32,lunch
+478,56,626,tomato paste,13.12,lunch
+479,56,626,avocado,74.95,lunch
+480,56,626,cheddar cheese,114.53,lunch
+481,56,610,chicken and cheese sandwich,511.05,lunch
+482,56,610,fruit salad,96.62,lunch
+483,56,610,chicken,124.67,lunch
+484,56,610,cheddar,114.53,lunch
+485,56,610,flax,55.0,lunch
+486,56,610,oat bran,87.6,lunch
+487,56,610,whole wheat pita,167.68,lunch
+488,56,610,fruit,48.31,lunch
+489,56,638,scrambled eggs with cheese,354.43,lunch
+490,56,638,fruit salad,96.62,lunch
+491,56,638,eggs scrambled,181.78,lunch
+492,56,638,butter,33.92,lunch
+493,56,638,fresh mozzarella,170.1,lunch
+494,56,638,mixed fruit,72.47,lunch
+495,56,638,dressing,129.0,lunch
+496,57,761,guacamole,45.26,lunch
+497,57,761,beans,238.76,lunch
+498,57,761,cucumber,30.15,lunch
+499,57,761,crackers,20.4,lunch
+500,57,761,black beans,227.04,lunch
+501,57,761,lentils,225.72,lunch
+502,57,761,chili beans,122.71,lunch
+503,57,847,lamb burger,681.53,lunch
+504,57,847,lamb,249.9,lunch
+505,57,847,salads,19.99,lunch
+506,57,847,hummus,99.6,lunch
+507,57,847,fries,365.04,lunch
+508,57,842,sardines,24.96,lunch
+509,57,842,garbanzo beans,268.96,lunch
+510,57,842,kale,36.4,lunch
+511,57,835,sardines,24.96,lunch
+512,57,835,garbanzo beans,268.96,lunch
+513,57,835,cucumber,30.15,lunch
+514,57,600,hot dog,154.56,lunch
+515,57,600,veggie chili,459.93,lunch
+516,57,600,meat,255.82,lunch
+517,57,600,hot dog,154.56,lunch
+518,57,600,veggie chili,459.93,lunch
+519,57,600,meat,255.82,lunch
+520,57,768,sardines,24.96,lunch
+521,57,768,cucumber,30.15,lunch
+522,57,768,garbanzo beans,268.96,lunch
+523,57,858,chicken,187.0,lunch
+524,57,858,olives,4.37,lunch
+525,57,858,cucumber,30.15,lunch
+526,57,858,chicken thigh,278.2,lunch
+527,57,858,olives,52.44,lunch
+528,57,612,sardines,24.96,lunch
+529,57,612,olives,4.37,lunch
+530,57,612,garbanzo beans,268.96,lunch
+531,57,612,cucumber,30.15,lunch
+532,57,612,sardines,24.96,lunch
+533,57,612,hot sauce,0.52,lunch
+534,57,612,beans,238.76,lunch
