@@ -9,7 +9,6 @@ Created on Mon Apr  9 14:54:34 2018
 import requests
 import json
 import pandas as pd
-# from nutritionix import Nutritionix
 
 app_id = "c0d12ddd"
 api_key = "f7e2c9f01df5c6372c4bc9290a2abe8d"
@@ -26,15 +25,21 @@ def getFoodItems(user_id, meal_id, kind, query, user_foodID_table):
                              data = json.dumps({
                                "query":query,
                              }))
-    foods_list=json.loads(response.text)["foods"]
-    for food_dict in foods_list:
-        dataToBeInserted = {"user_id": user_id, 
-                            "meal_id": meal_id,
-                            "food": food_dict["food_name"],
-                            "calories": food_dict["nf_calories"],
-                            "kind": kind}
-        user_foodID_table = user_foodID_table.append(dataToBeInserted, ignore_index=True)
-    return user_foodID_table    
+    try: 
+        foods_list=json.loads(response.text)["foods"]
+        for food_dict in foods_list:
+            dataToBeInserted = {"user_id": user_id, 
+                                "meal_id": meal_id,
+                                "food": food_dict["food_name"],
+                                "calories": food_dict["nf_calories"],
+                                "kind": kind}
+            user_foodID_table = user_foodID_table.append(dataToBeInserted, ignore_index=True)
+        return user_foodID_table  
+
+    except KeyError:
+        print("invalid query:",query)
+        return user_foodID_table    
+      
 
 def createUserFoodTable(platanoData, user_foodID_table):
     for index, row in platanoData.iterrows():
@@ -43,7 +48,12 @@ def createUserFoodTable(platanoData, user_foodID_table):
     return user_foodID_table
     
 
-platano = pd.read_csv("platano subset.csv")
+platano = pd.read_csv("/Users/jeremylew/Dropbox (Personal)/mHealth Project/Data/data_dump_2.csv")
+# Subset due to API limit:
+platano_subset = platano.loc[0:198,:]
+
 user_foodID_table = pd.DataFrame(columns=["user_id","meal_id","food","calories","kind"]) #Creates empty data frame
-user_foodID_table = createUserFoodTable(platano,user_foodID_table) # Generate a user-food table
+user_foodID_table = createUserFoodTable(platano_subset,user_foodID_table) # Generate a user-food table
+
+user_foodID_table.to_csv("/Users/jeremylew/Desktop/breakfast1-199.csv")
 
