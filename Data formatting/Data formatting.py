@@ -16,16 +16,17 @@ api_key = "f7e2c9f01df5c6372c4bc9290a2abe8d"
 # Version 2
 
 def getFoodItems(user_id, meal_id, kind, query, user_foodID_table):
-    response = requests.post('https://trackapi.nutritionix.com/v2/natural/nutrients',
-                             headers = {
-                               "content-type": "application/json",
-                               "x-app-id": app_id,
-                               "x-app-key": api_key
-                             },
-                             data = json.dumps({
-                               "query":query,
-                             }))
-    try: 
+    try:
+        response = requests.post('https://trackapi.nutritionix.com/v2/natural/nutrients',
+                                 headers = {
+                                   "content-type": "application/json",
+                                   "x-app-id": app_id,
+                                   "x-app-key": api_key
+                                 },
+                                 data = json.dumps({
+                                   "query":query,
+                                 }))
+     
         foods_list=json.loads(response.text)["foods"]
         for food_dict in foods_list:
             dataToBeInserted = {"user_id": user_id, 
@@ -35,25 +36,35 @@ def getFoodItems(user_id, meal_id, kind, query, user_foodID_table):
                                 "kind": kind}
             user_foodID_table = user_foodID_table.append(dataToBeInserted, ignore_index=True)
         return user_foodID_table  
-
+         
     except KeyError:
-        print("invalid query:",query)
+        print("Invalid query:",query)
         return user_foodID_table    
       
 
 def createUserFoodTable(platanoData, user_foodID_table):
-    for index, row in platanoData.iterrows():
-        food_query = row["title"] + " " + row["ingredients"]
-        user_foodID_table = getFoodItems(row["user_id"],row["meal_id"],row["kind"],food_query, user_foodID_table)
+    for index,row in platanoData.iterrows():
+        try:  
+            food_query = str(row["title"]) + " " + str(row["ingredients"])
+            user_foodID_table = getFoodItems(row["user_id"],row["meal_id"],row["kind"],food_query, user_foodID_table)
+        except:
+            print("Invalid query:", index, row["title"], row["ingredients"])
+            continue
+        
     return user_foodID_table
     
 
+# Read in Platano data
 platano = pd.read_csv("/Users/jeremylew/Dropbox (Personal)/mHealth Project/Data/data_dump_2.csv")
-# Subset due to API limit:
-platano_subset = platano.loc[0:198,:]
+platano[["title","ingredients"]] = platano[["title","ingredients"]].fillna("")
 
+# Subset due to API limit:
+platano_subset = platano.loc[199:399,:]
+
+# Get user-food table
 user_foodID_table = pd.DataFrame(columns=["user_id","meal_id","food","calories","kind"]) #Creates empty data frame
 user_foodID_table = createUserFoodTable(platano_subset,user_foodID_table) # Generate a user-food table
 
-user_foodID_table.to_csv("/Users/jeremylew/Desktop/breakfast1-199.csv")
+# Export file 
+user_foodID_table.to_csv("/Users/jeremylew/Desktop/Row200-399.csv")
 
