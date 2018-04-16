@@ -48,7 +48,7 @@ class UserRatings():
         ratings = ratings.merge(user_id_index_table,how="left",on="user_id")    
     
         # Ratings attributes
-        self.ratings = ratings
+        self.ratings = ratings[["user_id_index","foodID","ratings"]]
         self.food_id_table = food_id_table
         self.user_id_index_table = user_id_index_table
         self.nUsers = len(self.user_id_index_table)
@@ -64,25 +64,10 @@ class UserRatings():
         self.ratings_train = ratings_train
         self.ratings_test = ratings_test
               
-    # =============================================================================
-    # Populate the matrix 
-    # =============================================================================
-
-    def populateMatrix(self):
-        
-        # Initialise matrix 
-        self.ratingsMatrix = np.empty((self.nUsers,self.nFoods))*np.nan 
-        self.ratingsIndicator = np.zeros((self.nUsers,self.nFoods))
-        
-        # Populate the ratings matrix and ratings indicator matrix with training data
-        for index,user_id_index,foodID,ratings in self.ratings_train[["user_id_index","foodID","ratings"]].itertuples():
-            self.ratingsIndicator[user_id_index,foodID] = 1
-            self.ratingsMatrix[user_id_index,foodID] = ratings
-
-
+    
 user_food_table = pd.read_csv("Dataset.csv")
 lunch = UserRatings(user_food_table,"lunch")
-lunch.populateMatrix()
+
   
 # =============================================================================
 # Matrix factorization 
@@ -92,120 +77,188 @@ from sklearn.base import BaseEstimator
 from sklearn.model_selection import GridSearchCV
 
 class collabFilteringModel(BaseEstimator):
-    user_food_table = pd.read_csv("Dataset.csv")
     
-    def __init__(self,d=2,sigmasq=0.25,lambd=1,UserRatings=UserRatings(user_food_table)):
+    def __init__(self,d=2,sigmasq=0.25,lambd=1,nUsers=10,nFoods=10):
         
         # Parameters
         self.sigmasq = sigmasq
         self.d = d
         self.lambd = lambd 
-        self.UserRatings = UserRatings
+        self.nUsers = nUsers
+        self.nFoods = nFoods
         
-#    def _logJointLikelihood(self,UserRatings): 
-#        L = - np.sum([(1/(2*self.sigmasq))*
-#                   (UserRatings.ratingsMatrix[row,column]-np.dot(self.U[row,:],V[:,column]))**2 
-#                    for (row,column) in list(zip(*np.where(UserRatings.ratingsIndicator==1)))]) \
-#                    - (self.lambd/2)*np.matrix.trace(np.dot(U,U.T)) \
-#                    - (self.lambd/2)*np.matrix.trace(np.dot(V.T,V)) \
-#                    - len(np.where(UserRatings.ratingsIndicator==1)[0]) * np.log(np.sqrt((2*np.pi*self.sigmasq))) \
-#                    - UserRatings.nUsers * np.log((2*np.pi/self.lambd)**(self.d/2)) \
-#                    - UserRatings.nFoods * np.log((2*np.pi/self.lambd)**(self.d/2))
-#        return(L)
+    def _logJointLikelihood(self,ratingsMatrix,ratingsIndicator,U,V): 
+        L = - np.sum([(1/(2*self.sigmasq))*
+                   (ratingsMatrix[row,column]-np.dot(U[row,:],V[:,column]))**2 
+                    for (row,column) in list(zip(*np.where(ratingsIndicator==1)))]) \
+                    - (self.lambd/2)*np.matrix.trace(np.dot(U,U.T)) \
+                    - (self.lambd/2)*np.matrix.trace(np.dot(V.T,V)) \
+                    - len(np.where(ratingsIndicator==1)[0]) * np.log(np.sqrt((2*np.pi*self.sigmasq))) \
+                    - self.nUsers * np.log((2*np.pi/self.lambd)**(self.d/2)) \
+                    - self.nFoods * np.log((2*np.pi/self.lambd)**(self.d/2))
+        return(L)
     
     def fit(self,X,y=None):
+        # X is UserRatings.ratings_train.values
+        
+        # Initialise matrix 
+        ratingsMatrix = np.empty((self.nUsers,self.nFoods))
+        ratingsMatrix[:] = np.nan 
+        ratingsIndicator = np.zeros((self.nUsers,self.nFoods))
+        
+        # Populate the ratings matrix and ratings indicator matrix with training data
+        user_food_index = X[:,0:2].astype(int)
+        ratingsValue = X[:,2]
+        for i in range(0,len(user_food_index)):
+            ratingsIndicator[user_food_index[i,0],user_food_index[i,1]] = 1
+            ratingsMatrix[user_food_index[i,0],user_food_index[i,1]] = ratingsValue[i]
         
         #initialize all N1 Ui and N2 vj
-        V = np.random.multivariate_normal(mean=np.zeros(self.d),cov=(1/self.lambd)*np.eye(self.d),size=self.UserRatings.nFoods).T
-        U = np.random.multivariate_normal(mean=np.zeros(self.d),cov=(1/self.lambd)*np.eye(self.d),size=self.UserRatings.nUsers)
-#        logJointLikelihoodObj = np.array([])
-        
+        V = np.random.multivariate_normal(mean=np.zeros(self.d),cov=(1/self.lambd)*np.eye(self.d),size=self.nFoods).T
+        U = np.random.multivariate_normal(mean=np.zeros(self.d),cov=(1/self.lambd)*np.eye(self.d),size=self.nUsers)
+        logJointLikelihoodObj = np.array([])
+            
         for t in range(0,100):
             
             #Update user location
-            for i in range(0,UserRatings.nUsers):
-                ratedObjIndexes = np.where(UserRatings.ratingsIndicator[i,:]==1)[0]
+            for i in range(0,self.nUsers):
+                ratedObjIndexes = np.where(ratingsIndicator[i,:]==1)[0]
                 Vrated = V[:,ratedObjIndexes]
-                Mrated = UserRatings.ratingsMatrix[i,ratedObjIndexes]
+                Mrated = ratingsMatrix[i,ratedObjIndexes]
                 Vsum = np.dot(Vrated,Vrated.T)
                 U[i,:]=np.dot(np.linalg.inv(self.lambd*self.sigmasq*np.eye(self.d) + Vsum), np.dot(Vrated,Mrated.T))
             
             #Update object location
-            for j in range(0,UserRatings.nFoods):
-                ratedUserIndexes = np.where(UserRatings.ratingsIndicator[:,j]==1)[0]
+            for j in range(0,self.nFoods):
+                ratedUserIndexes = np.where(ratingsIndicator[:,j]==1)[0]
                 Urated = U[ratedUserIndexes,:]
-                Mrated = UserRatings.ratingsMatrix[ratedUserIndexes,j]           
+                Mrated = ratingsMatrix[ratedUserIndexes,j]           
                 Usum = np.dot(Urated.T,Urated)            
                 V[:,j] = np.dot(np.linalg.inv(self.lambd*self.sigmasq*np.eye(self.d) + Usum), np.dot(Urated.T,Mrated))
         
-#            logJL = self._logJointLikelihood(UserRatings)
-#            logJointLikelihoodObj = np.append(logJointLikelihoodObj,logJL)
+            logJL = self._logJointLikelihood(ratingsMatrix,ratingsIndicator,U,V)
+            logJointLikelihoodObj = np.append(logJointLikelihoodObj,logJL)
         
-#        self.logJointLikelihood = logJointLikelihoodObj
+        self.logJointLikelihood = logJointLikelihoodObj
         self.U_ = U
         self.V_ = V
     
         return self
     
-    def predict(self,UserRatings):
+    def predict(self,X,y=None):
+        # X is UserRatings.ratings_test.values
+        user_food_index = X[:,0:2].astype(int)
         predictedRatings = np.array([])
-        for index, user_id_index, foodID, ratings in UserRatings.ratings_test[["user_id_index","foodID","ratings"]].itertuples():
+        
+        for i in range(0,len(user_food_index)):
             predictedRatings = np.append(predictedRatings,
-                                         np.dot(self.U_[user_id_index,:], 
-                                                self.V_[:,foodID]))
+                                         np.dot(self.U_[user_food_index[i,0],:], 
+                                                self.V_[:,user_food_index[i,1]]))
         return predictedRatings
 
-    def score(self,UserRatings):
+    def score(self,X,y=None):
+        # X is UserRatings.ratings_train.values or UserRatings.ratings_test.values
+        y = X[:,2]
+        
         # Calculates the RSME
-        predicted = self.predict(UserRatings)
-        if len(predicted) != len(UserRatings.ratings_test): 
+        predicted = self.predict(X,y)
+        if len(predicted) != len(y): 
             raise Exception("Vector lengths not equal")
         else: 
-            rsme = np.sqrt((1/len(UserRatings.ratings_test))*np.sum((UserRatings.ratings_test["ratings"]-predicted)**2))
+            rsme = np.sqrt((1/len(y))*np.sum((y-predicted)**2))
             return -rsme #sklearn treats bigger as better    
-            
-params = {"d": np.arange(2,18,2),
+ 
+# =============================================================================
+# Select best model parameters using cross validation
+# =============================================================================
+           
+params = {"d":np.arange(2,14,2),
           "sigmasq":[0.05,0.10,0.25,0.35,0.45,0.5,0.6,0.8],
-          "lambd":[1,2,3],
-          "UserRatings":lunch}
+          "lambd":[1,2,3]}
 
-gridSearch = GridSearchCV(collabFilteringModel(),param_grid=params, cv=10)
+gridSearch = GridSearchCV(collabFilteringModel(nUsers=lunch.nUsers,nFoods=lunch.nFoods), param_grid=params, cv=5)
+gridSearch.fit(lunch.ratings_train.values)
 
+print(gridSearch.best_params_)
+print(gridSearch.best_score_)
+
+#print(gridSearch.best_params_)
+#{'d': 8, 'lambd': 1, 'sigmasq': 0.6}
+
+#print(gridSearch.best_score_)
+#-0.338966135715
+
+#print(gridSearch.cv_results_,file=open("./CV results.txt","w"))
+#print(gridSearch.grid_scores_,file=open("./grid scores.txt","w"))
+
+# =============================================================================
+# Check out the variability in log joint likelihood (objective function) between model runs using best parameters  
+# =============================================================================
         
 # Make 10 runs and plot
-tableVal = pd.DataFrame(columns=['run','logJLObj','RSME'])
-V_dict = {}
-for run in range(1,11):
-    results=MAPMatrixCompletion(d,sigmasq,lambd,nMovies,nUsers,ratingsIndicator,ratingsMatrix,ratingsTest)
-    V_dict["run"+str(run)]=results["V"]
-    tableVal = tableVal.append({'run':run, 'logJLObj':results["logJLObj"][-1], 
-                                'RSME':results['rsme']},ignore_index=True)
-    plt.plot(np.arange(2,101),results["logJLObj"][1:],label="run "+str(run))
-plt.title("Log Joint Likelihood")
-plt.legend(loc='best')
-plt.savefig("Problem2aLL.png")
 
-tableVal=tableVal.sort_values(by='logJLObj',ascending=False)
-tableVal[["run","logJLObj","RSME"]].to_csv("ObjectiveTable.csv")
-
-# Get the closest 10 movies by Euclidean distance
-movieTitles = pd.read_table("./hw4-data/movies.txt",header=None).values
-V = V_dict["run5"]
-queryMovies = ["Star Wars (1977)", "My Fair Lady (1964)", "GoodFellas (1990)"]
-
-def getTenClosestMovies(queryMovie,V,movieTitles):
+def makePredictions(UserRatings):
+    X_train = UserRatings.ratings_train.values
+    X_test = UserRatings.ratings_test.values
     
-    movieV = V[:,np.where(movieTitles==queryMovie)[0]]    
-    distances = np.sqrt(np.diag(np.dot((V - movieV).T,(V - movieV))))
-    closestMovies = movieTitles[np.argsort(distances)[:11]]
-    closestDistances = distances[np.argsort(distances)[:11]]
+    tableVal = pd.DataFrame(columns=['run','logJLObj','RSME'])
+    V_dict = {}
+    
+    for run in range(1,11):
+        model = collabFilteringModel(d=8, sigmasq=0.6, lambd=1, nUsers=UserRatings.nUsers, nFoods=UserRatings.nFoods)
+        model.fit(X_train)
+        V_dict["run"+str(run)]=model.V_
+        tableVal = tableVal.append({'run':run, 'logJLObj':model.logJointLikelihood[-1], 
+                                    'RSME':-model.score(X_test,)},ignore_index=True)
+        plt.plot(np.arange(2,101),model.logJointLikelihood[1:],label="run "+str(run))
+
+    plt.title("Log Joint Likelihood")
+    plt.legend(loc='best')
+    plt.savefig("./Objective Function.png")
+
+    tableVal=tableVal.sort_values(by='logJLObj',ascending=False)
+    tableVal[["run","logJLObj","RSME"]].to_csv("ObjectiveTable.csv")
+
+    return V_dict, tableVal
+
+
+V_dict, tableVal = makePredictions(lunch)
+
+# =============================================================================
+# Make predictions using model
+# =============================================================================
+
+model = collabFilteringModel(d=8, sigmasq=0.6, lambd=1, nUsers=lunch.nUsers, nFoods=lunch.nFoods)
+model.fit(lunch.ratings_train.values)
+
+# Get the closest 10 Foods by Euclidean distance
+def getClosestFoods(queryFood, food_id_table, V):
+    foodIndex = np.where(food_id_table==queryFood)[0]
+    foodV = V[:,foodIndex]    
+    distances = np.sqrt(np.diag(np.dot((V - foodV).T,(V - foodV))))
+    
+    closestFoods = food_id_table.loc[np.argsort(distances)]["food"]
+    closestDistances = distances[np.argsort(distances)]
     
     #Create pandas dataframe
-    movieResult = pd.DataFrame({"Movies":closestMovies.flatten(),
+    foodResult = pd.DataFrame({"Closest Foods":closestFoods,
                                 "Distance":closestDistances.flatten()})
-    print(movieResult)
-    #movieResult.to_csv("Problem2b_"+queryMovie+".csv")
-    return(movieResult)
+    foodResult=foodResult.drop(foodIndex)
+    
+    return(foodResult)
 
-for m in queryMovies:
-    getTenClosestMovies(m,V,movieTitles)
+getClosestFoods("chicken and dumpling soup",lunch.food_id_table,model.V_)
+
+def getUserFavFoods(user_id, UserRatings,U,V):
+    user_id_index = np.where(UserRatings.user_id_index_table["user_id"]==user_id)[0]
+    userRatings = np.dot(U[user_id_index,:],V)
+    
+    # Favourite foods according to rating
+    fav = pd.DataFrame({"Food": UserRatings.food_id_table.loc[np.argsort(userRatings)[::-1].flatten()]["food"]})
+ 
+    return fav
+
+getUserFavFoods(445, lunch, model.U_, model.V_)
+
+"Rating":userRatings.flatten()[np.argsort(userRatings)[::-1]].reshape(len(userRatings.flatten()),1)
+
