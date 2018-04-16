@@ -249,16 +249,17 @@ def getClosestFoods(queryFood, food_id_table, V):
 
 getClosestFoods("chicken and dumpling soup",lunch.food_id_table,model.V_)
 
-def getUserFavFoods(user_id, UserRatings,U,V):
+def getUserFavFoods(user_id, UserRatings, model):
     user_id_index = np.where(UserRatings.user_id_index_table["user_id"]==user_id)[0]
-    userRatings = np.dot(U[user_id_index,:],V)
+    userRatings = np.dot(model.U_[user_id_index,:],model.V_).flatten()
     
-    # Favourite foods according to rating
-    fav = pd.DataFrame({"Food": UserRatings.food_id_table.loc[np.argsort(userRatings)[::-1].flatten()]["food"]})
- 
+    # Favourite foods according to rating scores
+    fav = pd.DataFrame({"Food":UserRatings.food_id_table["food"],"Scores":userRatings})
+    fav = fav.sort_values(by=["Scores"],ascending=False)
+    
     return fav
 
-getUserFavFoods(445, lunch, model.U_, model.V_)
+getUserFavFoods(445, lunch, model)
 
-"Rating":userRatings.flatten()[np.argsort(userRatings)[::-1]].reshape(len(userRatings.flatten()),1)
+
 
