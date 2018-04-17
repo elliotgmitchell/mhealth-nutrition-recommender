@@ -26,9 +26,9 @@ class UserRatings():
         else:
             meal_table = user_food_table[user_food_table["kind"]==meal_kind].iloc[:,1:]
         
-        # Give each food a foodID
-        food_id_table = pd.DataFrame({"food":np.unique(meal_table.food),
-                                      "foodID":np.arange(0,len(np.unique(meal_table.food)))}) #the index in this list is used to determine the food ID 
+        # Give each food a foodID        
+        food_id_table = meal_table[["food","carbs","protein","fat","fiber","calories"]].copy().drop_duplicates(subset="food").reset_index(drop=True)
+        food_id_table["foodID"] = np.arange(0,len(np.unique(meal_table.food)))
         
         # Get count of meals logged and foods taken
         food_count = meal_table[["user_id","food"]].groupby(["user_id","food"])["food"].count().reset_index(name="food count")
@@ -64,9 +64,10 @@ class UserRatings():
         self.ratings_train = ratings_train
         self.ratings_test = ratings_test
               
-    
-user_food_table = pd.read_csv("Dataset.csv")
-lunch = UserRatings(user_food_table,"lunch")
+
+if __name__ == '__main__':    
+    user_food_table = pd.read_csv("Dataset.csv")
+    lunch = UserRatings(user_food_table,"lunch")
 
   
 # =============================================================================
@@ -98,7 +99,7 @@ class collabFilteringModel(BaseEstimator):
                     - self.nFoods * np.log((2*np.pi/self.lambd)**(self.d/2))
         return(L)
     
-    def fit(self,X,y=None):
+    def fit(self,X,y=None,**kwargs):
         # X is UserRatings.ratings_train.values
         
         # Initialise matrix 
@@ -113,8 +114,11 @@ class collabFilteringModel(BaseEstimator):
             ratingsIndicator[user_food_index[i,0],user_food_index[i,1]] = 1
             ratingsMatrix[user_food_index[i,0],user_food_index[i,1]] = ratingsValue[i]
         
-        #initialize all N1 Ui and N2 vj
+        #initialize all N1 Ui and N2 Vj
+        if kwargs.get("seed_v"): np.random.seed(kwargs.get("seed_v"))
         V = np.random.multivariate_normal(mean=np.zeros(self.d),cov=(1/self.lambd)*np.eye(self.d),size=self.nFoods).T
+        
+        if kwargs.get("seed_u"): np.random.seed(kwargs.get("seed_u"))
         U = np.random.multivariate_normal(mean=np.zeros(self.d),cov=(1/self.lambd)*np.eye(self.d),size=self.nUsers)
         logJointLikelihoodObj = np.array([])
             
@@ -171,16 +175,16 @@ class collabFilteringModel(BaseEstimator):
 # =============================================================================
 # Select best model parameters using cross validation
 # =============================================================================
-           
-params = {"d":np.arange(2,14,2),
-          "sigmasq":[0.05,0.10,0.25,0.35,0.45,0.5,0.6,0.8],
-          "lambd":[1,2,3]}
-
-gridSearch = GridSearchCV(collabFilteringModel(nUsers=lunch.nUsers,nFoods=lunch.nFoods), param_grid=params, cv=5)
-gridSearch.fit(lunch.ratings_train.values)
-
-print(gridSearch.best_params_)
-print(gridSearch.best_score_)
+if __name__ == '__main__':           
+    params = {"d":np.arange(2,14,2),
+              "sigmasq":[0.05,0.10,0.25,0.35,0.45,0.5,0.6,0.8],
+              "lambd":[1,2,3]}
+    
+    gridSearch = GridSearchCV(collabFilteringModel(nUsers=lunch.nUsers,nFoods=lunch.nFoods), param_grid=params, cv=5)
+    gridSearch.fit(lunch.ratings_train.values)
+    
+    print(gridSearch.best_params_)
+    print(gridSearch.best_score_)
 
 #print(gridSearch.best_params_)
 #{'d': 8, 'lambd': 1, 'sigmasq': 0.6}
@@ -222,44 +226,45 @@ def makePredictions(UserRatings):
     return V_dict, tableVal
 
 
-V_dict, tableVal = makePredictions(lunch)
+if __name__ == '__main__':
+    V_dict, tableVal = makePredictions(lunch)
 
 # =============================================================================
 # Make predictions using model
 # =============================================================================
 
-model = collabFilteringModel(d=8, sigmasq=0.6, lambd=1, nUsers=lunch.nUsers, nFoods=lunch.nFoods)
-model.fit(lunch.ratings_train.values)
-
-# Get the closest 10 Foods by Euclidean distance
-def getClosestFoods(queryFood, food_id_table, V):
-    foodIndex = np.where(food_id_table==queryFood)[0]
-    foodV = V[:,foodIndex]    
-    distances = np.sqrt(np.diag(np.dot((V - foodV).T,(V - foodV))))
-    
-    closestFoods = food_id_table.loc[np.argsort(distances)]["food"]
-    closestDistances = distances[np.argsort(distances)]
+# Get the closest Foods by Euclidean distance
+def getClosestFoods(queryFood, UserRatings, model):
+    foodIndex = np.where(UserRatings.food_id_table==queryFood)[0]
+    foodV = model.V_[:,foodIndex]    
+    distances = np.sqrt(np.diag(np.dot((model.V_ - foodV).T,(model.V_ - foodV))))
     
     #Create pandas dataframe
-    foodResult = pd.DataFrame({"Closest Foods":closestFoods,
-                                "Distance":closestDistances.flatten()})
-    foodResult=foodResult.drop(foodIndex)
+    foodResult = UserRatings.food_id_table.copy()
+    foodResult["Distance"] = distances
+    foodResult=foodResult.drop(foodIndex[0])
+    foodResult = foodResult.sort_values(by=["Distance"])
     
-    return(foodResult)
-
-getClosestFoods("chicken and dumpling soup",lunch.food_id_table,model.V_)
+    return foodResult
 
 def getUserFavFoods(user_id, UserRatings, model):
-    user_id_index = np.where(UserRatings.user_id_index_table["user_id"]==user_id)[0]
+    user_id_index = np.where(UserRatings.user_id_index_table["user_id"]==user_id)[0][0]
     userRatings = np.dot(model.U_[user_id_index,:],model.V_).flatten()
     
     # Favourite foods according to rating scores
-    fav = pd.DataFrame({"Food":UserRatings.food_id_table["food"],"Scores":userRatings})
-    fav = fav.sort_values(by=["Scores"],ascending=False)
+    fav = UserRatings.food_id_table.copy()
+    fav["Inferred ratings"] = userRatings
+    fav = fav.merge(UserRatings.ratings_train[UserRatings.ratings_train["user_id_index"]==user_id_index][["foodID","ratings"]],how="left",on="foodID")
+    fav = fav.merge(UserRatings.ratings_test[UserRatings.ratings_test["user_id_index"]==user_id_index][["foodID","ratings"]],how="left",on="foodID",suffixes=("_train","_test"))
+    fav = fav.sort_values(by=["Inferred ratings"],ascending=False)
     
     return fav
 
-getUserFavFoods(445, lunch, model)
 
+if __name__ == '__main__':
+    model = collabFilteringModel(d=8, sigmasq=0.6, lambd=1, nUsers=lunch.nUsers, nFoods=lunch.nFoods)
+    model.fit(lunch.ratings_train.values)
+    print(getClosestFoods("chicken and dumpling soup",lunch,model))
+    print(getUserFavFoods(445, lunch, model))
 
 
