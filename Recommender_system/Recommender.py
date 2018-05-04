@@ -43,7 +43,7 @@ class UserRatings():
         food_count = self.meal_table[["user_id","food"]].groupby(["user_id","food"])["food"].count().reset_index(name="food count")
         food_count = food_count.merge(food_id_table,how="left",on="food")
         meals_logged_count = self.meal_table[["user_id","meal_id"]].groupby("user_id")["meal_id"].nunique().reset_index(name="count of meals logged")
-                
+
         # Calculate the ratings
         ratings = food_count.merge(meals_logged_count,how="left",on="user_id")
         ratings["ratings"] = ratings["food count"]/ratings["count of meals logged"]  #calculate ratings
@@ -297,7 +297,7 @@ def getUserFavFoods(user_id, UserRatings, model):
     return fav
 
 
-def getMealRec(user_id, user_ratings, model, seed_food, nutrition_constraints):
+def getMealRec(user_id, user_ratings, model, seed_food, nutrition_constraints=None):
     """
     Make recommendations for a user, based on a given seed food item
     For example, given the seed_food 'chicken', return a dataframe of possible
@@ -327,7 +327,8 @@ def getMealRec(user_id, user_ratings, model, seed_food, nutrition_constraints):
         meal_recommendations = check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candidate, fav, nutrition_constraints, user_ratings)
 
     # sort by the score from the recommender algorithm
-    meal_recommendations.sort_values(by="inferred_score", ascending=False, inplace=True)
+    if not meal_recommendations.empty:
+        meal_recommendations.sort_values(by="inferred_score", ascending=False, inplace=True)
 
     return meal_recommendations
 
@@ -370,6 +371,31 @@ def check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candi
 
     return meal_recommendations
 
+
+def format_meal_rec(suggestion, seed_food):
+    meal_rec = "To go with {candidate_servings:g} {candidate_servings_sing_or_plural} \
+of {seed_food}, try {seed_servings:g} {seed_servings_sing_or_plural} of {candidates}".format(
+        candidate_servings = suggestion.candidate_servings,
+        candidate_servings_sing_or_plural = servings_sing_or_plural(suggestion.candidate_servings),
+        seed_food = seed_food,
+        seed_servings = suggestion.seed_servings,
+        seed_servings_sing_or_plural = servings_sing_or_plural(suggestion.seed_servings),
+        candidates = format_candidates(suggestion.candidates)
+)
+    return meal_rec
+
+def servings_sing_or_plural(n_servings):
+    if n_servings > 1:
+        return "servings"
+    return "serving"
+
+def format_candidates(candidates):
+    candidates = list(candidates)
+    if len(candidates) == 1:
+        return candidates[0]
+    candidates_str = ', '.join(candidates[0:-1])
+    candidates_str += ' and {}'.format(candidates[-1])
+    return candidates_str
 
 if __name__ == '__main__':
     model = collabFilteringModel(d=8, sigmasq=0.6, lambd=1, nUsers=lunch.nUsers, nFoods=lunch.nFoods)
