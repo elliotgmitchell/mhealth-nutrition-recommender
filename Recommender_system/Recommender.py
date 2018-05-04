@@ -324,6 +324,7 @@ def getMealRec(user_id, user_ratings, model, seed_food, nutrition_constraints=No
 
     # For each candidate, update the output df with a combination that meets the constraints
     for candidate in candidates:
+        # print("trying {}".format(candidate))
         meal_recommendations = check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candidate, fav, nutrition_constraints, user_ratings)
 
     # sort by the score from the recommender algorithm
@@ -354,7 +355,7 @@ def check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candi
             carbs = (seed_food_nutrition.carbs.iloc[0] * i) + (candidate_food_items.carbs.sum() * j)
             calories = (seed_food_nutrition.calories.iloc[0] * i) + (candidate_food_items.calories.sum() * j)
 
-            if ((carbs > 30) and (carbs < 45)) and ((calories > 300) and (calories < 600)):
+            if ((carbs > 30) and (carbs < 95)) and ((calories > 300) and (calories < 600)):
                 # Look up preference from `fav`
                 score = fav[fav.food.apply(lambda x: x in candidate)]["Inferred ratings"].mean()
 
@@ -368,7 +369,7 @@ def check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candi
 
                 meal_recommendations = meal_recommendations.append(temp_df)
                 return meal_recommendations
-
+    # print("could not find a combination within constraints")
     return meal_recommendations
 
 
@@ -384,10 +385,12 @@ of {seed_food}, try {seed_servings:g} {seed_servings_sing_or_plural} of {candida
 )
     return meal_rec
 
+
 def servings_sing_or_plural(n_servings):
     if n_servings > 1:
         return "servings"
     return "serving"
+
 
 def format_candidates(candidates):
     candidates = list(candidates)
@@ -396,6 +399,7 @@ def format_candidates(candidates):
     candidates_str = ', '.join(candidates[0:-1])
     candidates_str += ' and {}'.format(candidates[-1])
     return candidates_str
+
 
 if __name__ == '__main__':
     model = collabFilteringModel(d=8, sigmasq=0.6, lambd=1, nUsers=lunch.nUsers, nFoods=lunch.nFoods)
