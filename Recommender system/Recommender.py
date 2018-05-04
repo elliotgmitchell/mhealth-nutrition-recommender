@@ -80,6 +80,16 @@ class UserRatings():
 
         return self.rules
 
+    def mealSummary(self, user_id):
+        """
+        Return a summary of meals eaten for this user
+        """
+        user_meals = self.meal_table[(self.meal_table.user_id == user_id)]
+        user_food_list = user_meals.food.unique()
+        user_meal_summary = pd.DataFrame({'list of foods': user_meals.groupby("meal_id")['food'].apply(', '.join)})
+        return user_food_list, user_meal_summary
+
+
 def encode_units(x):
     if x <= 0:
         return 0
@@ -309,7 +319,7 @@ def getMealRec(user_id, user_ratings, model, seed_food, nutrition_constraints):
 
     # For each candidate, update the output df with a combination that meets the constraints
     for candidate in candidates:
-        meal_recommendations = check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candidate, fav, nutrition_constraints)
+        meal_recommendations = check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candidate, fav, nutrition_constraints, user_ratings)
 
     # sort by the score from the recommender algorithm
     meal_recommendations.sort_values(by="inferred_score", ascending=False, inplace=True)
@@ -317,7 +327,7 @@ def getMealRec(user_id, user_ratings, model, seed_food, nutrition_constraints):
     return meal_recommendations
 
 
-def check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candidate, fav, nutrition_constraints):
+def check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candidate, fav, nutrition_constraints, user_ratings):
     """
     Helper function to see if some combination of candidate foods and seed food
     can be used to meet nutrition_constraints
@@ -338,7 +348,7 @@ def check_nutrition_constraints(meal_recommendations, seed_food_nutrition, candi
             carbs = (seed_food_nutrition.carbs.iloc[0] * i) + (candidate_food_items.carbs.sum() * j)
             calories = (seed_food_nutrition.calories.iloc[0] * i) + (candidate_food_items.calories.sum() * j)
 
-            if ((carbs > 10) and (carbs < 45)) and ((calories > 300) and (calories < 600)):
+            if ((carbs > 30) and (carbs < 45)) and ((calories > 300) and (calories < 600)):
                 # Look up preference from `fav`
                 score = fav[fav.food.apply(lambda x: x in candidate)]["Inferred ratings"].mean()
 
