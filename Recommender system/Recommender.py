@@ -15,7 +15,7 @@ from mlxtend.frequent_patterns import apriori, association_rules
 
 class UserRatings():
 
-    def __init__(self,user_food_table,meal_kind=None):
+    def __init__(self,user_food_table,meal_kind=None, trim_low_food_count=1, trim_threshold=1):
 
         # =============================================================================
         # Data preprocessing
@@ -30,15 +30,20 @@ class UserRatings():
         # Filter out calorie free foods like 'bottle of water'
         self.meal_table = self.meal_table[self.meal_table.calories > 5]
 
+        # Remove low frequency foods in meal table
+        if trim_low_food_count == 1:
+            filtered = self.meal_table.groupby(["food"])["food"].filter(lambda x: len(x) > trim_threshold)
+            self.meal_table = self.meal_table[self.meal_table["food"].isin(filtered)]
+
         # Give each food a foodID
         food_id_table = self.meal_table[["food","carbs","protein","fat","fiber","calories"]].copy().drop_duplicates(subset="food").reset_index(drop=True)
         food_id_table["foodID"] = np.arange(0,len(np.unique(self.meal_table.food)))
 
-        # Get count of meals logged and foods taken
+        # Get count of meals logged and foods taken per user
         food_count = self.meal_table[["user_id","food"]].groupby(["user_id","food"])["food"].count().reset_index(name="food count")
         food_count = food_count.merge(food_id_table,how="left",on="food")
         meals_logged_count = self.meal_table[["user_id","meal_id"]].groupby("user_id")["meal_id"].nunique().reset_index(name="count of meals logged")
-
+                
         # Calculate the ratings
         ratings = food_count.merge(meals_logged_count,how="left",on="user_id")
         ratings["ratings"] = ratings["food count"]/ratings["count of meals logged"]  #calculate ratings
@@ -88,7 +93,7 @@ def encode_units(x):
 
 if __name__ == '__main__':
     user_food_table = pd.read_csv("Dataset.csv")
-    lunch = UserRatings(user_food_table,"lunch")
+    lunch = UserRatings(user_food_table,"lunch",trim_low_food_count=1, trim_threshold=1)
 
 
 # =============================================================================
