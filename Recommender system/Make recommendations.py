@@ -10,7 +10,7 @@ import pandas as pd
 from Recommender import UserRatings, collabFilteringModel, getClosestFoods, getUserFavFoods, getMealRec;
 
 user_food_table = pd.read_csv("Dataset.csv")
-lunch = UserRatings(user_food_table)
+lunch = UserRatings(user_food_table, "lunch", trim_low_food_count=1, trim_threshold=1)
 
 # Train the model
 print("Training the model...")
@@ -26,7 +26,7 @@ print(closest_foods)
 print(fav_foods)
 
 print("Calculating association rules...")
-lunch.calculateAssociationRules(0.001)
+lunch.calculateAssociationRules(0.005)
 print(lunch.rules)
 print(lunch.rules[lunch.rules.antecedants.apply(lambda x: 'chicken' in x)])
 
